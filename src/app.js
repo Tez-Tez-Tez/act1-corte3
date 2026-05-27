@@ -7,7 +7,10 @@ const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 
-initDatabase().catch(err => console.error('DB init failed:', err.message));
+initDatabase().catch(err => {
+  const msg = err.errors ? err.errors.map(e => e.message).join(', ') : err.message;
+  console.error('DB init failed:', msg);
+});
 
 app.use(cors());
 app.use(express.json());
