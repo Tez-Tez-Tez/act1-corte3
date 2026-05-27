@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
+    </marker>
+    <linearGradient id="local" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="github" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#24292e"/>
+      <stop offset="100%" style="stop-color:#555"/>
+    </linearGradient>
+    <linearGradient id="render" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#46e3b7"/>
+      <stop offset="100%" style="stop-color:#2caa82"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="600" fill="#f5f7fa" rx="10"/>
+
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#333">Arquitectura de Despliegue - FutbolStats Pro</text>
+
+  <!-- Section 1: Local Machine -->
+  <rect x="50" y="70" width="280" height="200" rx="12" fill="url(#local)" opacity="0.9"/>
+  <text x="190" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Máquina Local</text>
+  <text x="190" y="130" text-anchor="middle" font-size="12" fill="white">Código Fuente (Node.js/Express)</text>
+  <text x="190" y="155" text-anchor="middle" font-size="12" fill="white">Dockerfile + docker-compose.yml</text>
+  <text x="190" y="180" text-anchor="middle" font-size="12" fill="white">PostgreSQL (Contenedor)</text>
+  <text x="190" y="205" text-anchor="middle" font-size="12" fill="white">Tests (Jest + Supertest)</text>
+  <text x="190" y="230" text-anchor="middle" font-size="12" fill="white">git push origin master</text>
+
+  <!-- Arrow 1 -->
+  <line x1="330" y1="170" x2="390" y2="170" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Section 2: GitHub Actions -->
+  <rect x="395" y="70" width="280" height="200" rx="12" fill="url(#github)" opacity="0.9"/>
+  <text x="535" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="white">GitHub Actions (CI)</text>
+  <text x="535" y="130" text-anchor="middle" font-size="12" fill="#ccc">Triggers: push a master/main</text>
+  <text x="535" y="155" text-anchor="middle" font-size="12" fill="#ccc">Service: PostgreSQL 17 (temporal)</text>
+  <text x="535" y="180" text-anchor="middle" font-size="12" fill="#ccc">npm ci (instalar dependencias)</text>
+  <text x="535" y="205" text-anchor="middle" font-size="12" fill="#ccc">npm test (Jest - 9 tests)</text>
+  <text x="535" y="230" text-anchor="middle" font-size="12" fill="#ccc">Si pasa → Deploy a Render</text>
+
+  <!-- Arrow 2 -->
+  <line x1="675" y1="170" x2="735" y2="170" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Section 3: Render Cloud -->
+  <rect x="740" y="70" width="220" height="200" rx="12" fill="url(#render)" opacity="0.9"/>
+  <text x="850" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Render Cloud</text>
+  <text x="850" y="130" text-anchor="middle" font-size="12" fill="white">Web Service</text>
+  <text x="850" y="155" text-anchor="middle" font-size="11" fill="#e8ffe8">Node.js (Express)</text>
+  <text x="850" y="180" text-anchor="middle" font-size="11" fill="#e8ffe8">Health: /api/health</text>
+  <text x="850" y="205" text-anchor="middle" font-size="11" fill="#e8ffe8">Render PostgreSQL</text>
+  <text x="850" y="230" text-anchor="middle" font-size="11" fill="#e8ffe8">render.yaml (Blueprint)</text>
+
+  <!-- Database section -->
+  <rect x="300" y="330" width="400" height="60" rx="10" fill="#ffecd2" stroke="#fcb69f" stroke-width="2"/>
+  <text x="500" y="358" text-anchor="middle" font-size="14" font-weight="bold" fill="#d63031">render.yaml (Blueprint)</text>
+  <text x="500" y="378" text-anchor="middle" font-size="12" fill="#636e72">Define: Web Service + PostgreSQL Database automáticamente</text>
+
+  <!-- Auto-deploy flow -->
+  <rect x="300" y="420" width="400" height="50" rx="10" fill="#dfe6e9" stroke="#b2bec3" stroke-width="2"/>
+  <text x="500" y="440" text-anchor="middle" font-size="12" font-weight="bold" fill="#2d3436">Flujo de Despliegue Automático (Blue-Green)</text>
+  <text x="500" y="458" text-anchor="middle" font-size="11" fill="#636e72">git push → GitHub Actions (CI pasa) → Render deploy automático</text>
+
+  <!-- Dotted lines to show deployment flow -->
+  <line x1="535" y1="270" x2="535" y2="330" stroke="#555" stroke-width="1.5" stroke-dasharray="5,5"/>
+  <line x1="850" y1="270" x2="850" y2="330" stroke="#555" stroke-width="1.5" stroke-dasharray="5,5"/>
+
+  <!-- Legend -->
+  <rect x="50" y="510" width="900" height="70" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <text x="500" y="535" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Leyenda</text>
+  <rect x="80" y="548" width="15" height="15" fill="url(#local)" rx="3"/>
+  <text x="100" y="560" font-size="11" fill="#555">Local Dev</text>
+  <rect x="250" y="548" width="15" height="15" fill="url(#github)" rx="3"/>
+  <text x="270" y="560" font-size="11" fill="#555">GitHub Actions (CI)</text>
+  <rect x="450" y="548" width="15" height="15" fill="url(#render)" rx="3"/>
+  <text x="470" y="560" font-size="11" fill="#555">Render (Producción)</text>
+</svg>
