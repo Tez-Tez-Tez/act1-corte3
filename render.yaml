@@ -4,7 +4,7 @@ services:
     runtime: node
     repo: https://github.com/Tez-Tez-Tez/act1-corte3
     plan: free
-    branch: master
+    branch: main
     region: oregon
     buildCommand: npm ci --only=production
     startCommand: node src/server.js
